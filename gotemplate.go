@@ -65,8 +65,7 @@ func printNode(fset *token.FileSet, node ast.Node) string {
 	var doc bytes.Buffer
 	err := printer.Fprint(&doc, fset, node)
 	if err != nil {
-		log.Print(err)
-		return ""
+		log.Fatal(err)
 	}
 	return doc.String()
 }
