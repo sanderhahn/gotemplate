@@ -1,0 +1,9 @@
+<% if len(messages) > 0 { %>
+  <ul>
+    <% for _, message := range messages { %>
+    <li><%= message %></li>
+    <% } %>
+  </ul>
+<% } else { %>
+  <p>No messages</p>
+<% } %>

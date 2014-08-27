@@ -1,0 +1,12 @@
+<!--
+  Generated at: <%= time.Now().Format("Jan 2, 2006 at 3:04pm (MST)") %>  
+-->
+
+<body>
+  <h1><%= model.Title %></h1>
+  <% err = WriteMessages(writer, model.Messages) %>
+
+  <% for i := 0; i < 5; i++ { %>
+  Hello <%= strconv.Itoa(i) %>
+  <% } %>
+</body>
