@@ -18,6 +18,16 @@ import (
 )
 
 func write(str string) string {
+	if str[0] == '=' {
+		// raw
+		str = str[1:len(str)]
+	} else if str[0] == 'u' {
+		str = "url.QueryEscape(" + str[1:len(str)] + ")"
+	} else if str[0] == 'h' {
+		str = "html.EscapeString(" + str[1:len(str)] + ")"
+	} else {
+		str = "html.EscapeString(" + str + ")"
+	}
 	return "if err == nil { _, err = io.WriteString(writer, " + str + ") };"
 }
 
@@ -37,7 +47,7 @@ func convertErb(content string) (code string) {
 				return str + ";"
 			}
 		} else {
-			return write(strconv.Quote(str))
+			return write("=" + strconv.Quote(str))
 		}
 	})
 }
